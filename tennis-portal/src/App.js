@@ -1,27 +1,26 @@
 import React from 'react';
-import { Provider, connect } from 'react-redux';
-import { createStore } from 'redux';
-import Reducer from './reducers/reducer'
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import UserReducer from './reducers/UserReducer'
+import FormsReducer from './reducers/FormsReducer';
+import Home from './screens/Home'
 
-
-const store = createStore(
-    Reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-const TemporaryComponent = ({ data }) => <div> Tennis portal - {data} </div>;
-
-const mapStateToProps = state => ({
-    data: state.data,
+const rootReducer = combineReducers({
+    user: UserReducer,
+    forms: FormsReducer,
 });
 
-const TemporaryContainer = connect(mapStateToProps)(TemporaryComponent);
+const store = createStore(
+    rootReducer,
+    compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
+);
 
-
+// TODO: correct anonymous imports
 function App() {
   return (
       <Provider store={store}>
-        <TemporaryContainer />
+        <Home />
       </Provider>
   );
 }
