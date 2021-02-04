@@ -1,4 +1,4 @@
-const camelCaseToSnakeCase = variableName => variableName.split('').map(character => character === character.toUpperCase() ? '_' + character.toLowerCase() : character).join('');
+const camelCaseToSnakeCase = variableName => variableName.split('').map(character => character === character.toUpperCase() && isNaN(parseInt(character)) ? '_' + character.toLowerCase() : character).join('');
 
 export default body => {
     const validRequestBody = {};

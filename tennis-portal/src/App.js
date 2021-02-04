@@ -1,10 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import UserReducer from './reducers/UserReducer'
 import FormsReducer from './reducers/FormsReducer';
-import Home from './screens/Home'
+import AppRouting from './routing';
+import Navigation from './shared/components/Navigation'
 
 const rootReducer = combineReducers({
     user: UserReducer,
@@ -20,7 +22,10 @@ const store = createStore(
 function App() {
   return (
       <Provider store={store}>
-        <Home />
+        <BrowserRouter>
+            <Navigation/>
+            <AppRouting/>
+        </BrowserRouter>
       </Provider>
   );
 }

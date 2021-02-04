@@ -14,8 +14,8 @@ const loginInit = () => ({
     type: LOGIN_INIT
 });
 
-const loginSuccess =  userData => {
-    localStorage.setItem('user', userData);
+const loginSuccess =  ({ authToken, ...userData }) => {
+    localStorage.setItem('auth_token', authToken);
 
     return {
         type: LOGIN_SUCCESS,
