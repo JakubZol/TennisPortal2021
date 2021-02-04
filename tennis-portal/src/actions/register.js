@@ -53,8 +53,8 @@ export const register = registerForm => dispatch => {
             'Accept': 'application/json',
         },
         data: JSON.stringify(formatRequestBody(registerForm)),
-    }).then(response => {
-        dispatch(registerUserSuccess(formatResponseBody(response.data)));
+    }).then(({ data }) => {
+        dispatch(registerUserSuccess(formatResponseBody(data)));
         dispatch(cleanRegisterForm());
     }).catch(error => {
         dispatch(registerUserFailure(error));

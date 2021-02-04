@@ -43,8 +43,8 @@ export const login = loginCredentials => dispatch => {
             'Accept': 'application/json',
         },
         data: JSON.stringify(formatRequestBody(loginCredentials)),
-    }).then(response => {
-        dispatch(loginSuccess(formatResponseBody(response.data)));
+    }).then(({ data }) => {
+        dispatch(loginSuccess(formatResponseBody(data)));
         dispatch(cleanLoginForm());
     }).catch(error => {
         dispatch(loginFailure(error));
