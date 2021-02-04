@@ -3,7 +3,7 @@ import {
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
     FETCH_USER_DATA_SUCCESS,
-    DELETE_ACCOUNT_SUCCESS
+    DELETE_ACCOUNT_SUCCESS, UPDATE_USER_DATA_SUCCESS
 } from "../actions/types";
 
 
@@ -21,6 +21,7 @@ export default (state = INITIAL_STATE, action) => {
                 isAuthenticated: true,
             };
         case FETCH_USER_DATA_SUCCESS:
+        case UPDATE_USER_DATA_SUCCESS:
             return {
                 ...state,
                 user: action.payload,

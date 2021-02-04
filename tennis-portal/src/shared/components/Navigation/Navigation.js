@@ -27,7 +27,7 @@ const Navigation = ({ isAuthenticated, logout, updateDeleteAccountForm, deleteCo
     return (
         <nav>
             {Object.keys(navigationBar).map(link => (
-                <Link to={`/${link.toLowerCase()}`}>{navigationBar[link]}</Link>
+                <Link to={`/${link.toLowerCase()}`} key={navigationBar[link]}>{navigationBar[link]}</Link>
             ))}
             {currentPath === '/account' && <>
                 <input onChange={({ target }) => onChange(target.value, 'password1')} type="password" placeholder="Hasło" />
