@@ -1,4 +1,12 @@
-import { UPDATE_REGISTER_FORM, CLEAN_REGISTER_FORM, UPDATE_LOGIN_FORM, CLEAN_LOGIN_FORM, UPDATE_DELETE_CONFIRMATION_FORM, CLEAN_DELETE_CONFIRMATION_FORM } from "../actions/types";
+import {
+    UPDATE_REGISTER_FORM,
+    CLEAN_REGISTER_FORM,
+    UPDATE_LOGIN_FORM,
+    CLEAN_LOGIN_FORM,
+    UPDATE_DELETE_CONFIRMATION_FORM,
+    CLEAN_DELETE_CONFIRMATION_FORM,
+    UPDATE_USER_DATA_SUCCESS, UPDATE_USER_DATA_FORM, CLEAN_USER_DATA_FORM
+} from "../actions/types";
 
 
 
@@ -6,7 +14,21 @@ const INITIAL_STATE = {
     register: {},
     login: {},
     deleteConfirmation: {},
+    updateUser: {
+        username: { writable: false },
+        email: { writable: false },
+        firstName: { writable: false },
+        lastName: { writable: false },
+        height: { writable: false },
+        weight: { writable: false },
+        gender: { writable: false },
+        birthdate: { writable: false },
+        plays: { writable: false },
+        backhand: { writable: false },
+        ntrp: { writable: false },
+    },
 };
+
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type){
@@ -22,6 +44,10 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, deleteConfirmation: { ...state.deleteConfirmation, ...action.payload } };
         case CLEAN_DELETE_CONFIRMATION_FORM:
             return { ...state, deleteConfirmation: {} };
+        case UPDATE_USER_DATA_FORM:
+            return { ...state, updateUser: { ...state.updateUser, [action.field]: action.payload } };
+        case CLEAN_USER_DATA_FORM:
+            return { ...state, updateUser: INITIAL_STATE.updateUser };
         default:
             return state;
     }
