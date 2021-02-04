@@ -1,3 +1,3 @@
-import { getRegisterForm, getLoginForm } from "./selectors";
+import { getRegisterForm, getLoginForm, getAuthenticationState } from "./selectors";
 
-export { getRegisterForm, getLoginForm };
+export { getRegisterForm, getLoginForm, getAuthenticationState };

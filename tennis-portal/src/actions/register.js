@@ -22,8 +22,8 @@ const registerUserInit = () => ({
     type: REGISTER_USER_INIT
 });
 
-const registerUserSuccess = userData => {
-    localStorage.setItem('user', userData);
+const registerUserSuccess = ({ authToken, ...userData }) => {
+    localStorage.setItem('auth_token', authToken);
 
     return {
         type: REGISTER_USER_SUCCESS,
