@@ -1,0 +1,16 @@
+export const REGISTER_USER_INIT = '@user/REGISTER_USER_INIT';
+export const REGISTER_USER_SUCCESS = '@user/REGISTER_USER_SUCCESS';
+export const REGISTER_USER_FAILURE = '@user/REGISTER_USER_FAILURE';
+
+
+export const UPDATE_REGISTER_FORM = '@forms/UPDATE_REGISTER_FORM';
+export const CLEAN_REGISTER_FORM = '@forms/CLEAN_REGISTER_FORM';
+
+
+export const LOGIN_INIT = '@user/REGISTER_USER_INIT';
+export const LOGIN_SUCCESS = '@user/REGISTER_USER_SUCCESS';
+export const LOGIN_FAILURE = '@user/REGISTER_USER_FAILURE';
+
+
+export const UPDATE_LOGIN_FORM = '@forms/UPDATE_LOGIN_FORM';
+export const CLEAN_LOGIN_FORM = '@forms/CLEAN_LOGIN_FORM';
