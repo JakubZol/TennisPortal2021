@@ -42,7 +42,7 @@ export const updateUserData = userForm => dispatch => {
     dispatch(updateUserDataInit());
 
     axios({
-        url: `${PLAYERS_SERVICE}/`,  // todo: FIX SLASH
+        url: PLAYERS_SERVICE,
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
