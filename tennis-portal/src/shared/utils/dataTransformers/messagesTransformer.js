@@ -20,3 +20,14 @@ export default (messages, userId) => {
 
     return formattedMessagesList;
 }
+
+export const appendNewMessage = (message, messages, userId) => {
+    const { messageFrom, messageTo, ...messageData } = message;
+
+    const isMessageFrom = messageFrom.id === userId;
+    const messagingUser = !isMessageFrom ? messageFrom : messageTo;
+    return messages.map(({ user, messages }) => ({
+        user,
+        messages: user.id === messagingUser.id ? [ ...messages, { ...messageData, messageFrom: isMessageFrom, messageTo: !isMessageFrom } ] : messages,
+    }))
+};

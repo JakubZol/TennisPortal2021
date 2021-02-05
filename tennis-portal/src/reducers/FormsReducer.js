@@ -5,7 +5,13 @@ import {
     CLEAN_LOGIN_FORM,
     UPDATE_DELETE_CONFIRMATION_FORM,
     CLEAN_DELETE_CONFIRMATION_FORM,
-    UPDATE_USER_DATA_SUCCESS, UPDATE_USER_DATA_FORM, CLEAN_USER_DATA_FORM, UPDATE_PASSWORD_FORM, CLEAN_PASSWORD_FORM
+    UPDATE_USER_DATA_FORM,
+    CLEAN_USER_DATA_FORM,
+    UPDATE_PASSWORD_FORM,
+    CLEAN_PASSWORD_FORM,
+    UPDATE_SEND_MESSAGE_FORM,
+    CLEAN_SEND_MESSAGE_FORM,
+    LOGOUT_SUCCESS,
 } from "../actions/types";
 
 
@@ -27,7 +33,8 @@ const INITIAL_STATE = {
         backhand: { writable: false },
         ntrp: { writable: false },
     },
-    updatePassword: {}
+    updatePassword: {},
+    message: '',
 };
 
 
@@ -53,6 +60,12 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, updatePassword: { ...state.updatePassword, ...action.payload } };
         case CLEAN_PASSWORD_FORM:
             return { ...state, updatePassword: {} };
+        case UPDATE_SEND_MESSAGE_FORM:
+            return { ...state, message: action.payload };
+        case CLEAN_SEND_MESSAGE_FORM:
+            return { ...state, message: '' };
+        case LOGOUT_SUCCESS:
+            return INITIAL_STATE;
         default:
             return state;
     }

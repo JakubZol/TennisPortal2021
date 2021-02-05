@@ -39,7 +39,7 @@ export const updatePassword = passwordForm => dispatch => {
     dispatch(updatePasswordInit());
 
     axios({
-        url: PASSWORD_SERVICE,  // todo: FIX SLASH
+        url: PASSWORD_SERVICE,
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

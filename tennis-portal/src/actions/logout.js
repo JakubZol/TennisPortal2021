@@ -1,18 +1,16 @@
 import axios from 'axios';
 import { LOGOUT_SUCCESS, LOGOUT_FAILURE, LOGOUT_INIT } from './types'
 import { LOGOUT_ENDPOINT } from "../shared/constants/endpoints";
-import formatResponseBody from "../shared/utils/formatResponseBody";
 
 const logoutInit = () => ({
     type: LOGOUT_INIT
 });
 
-const logoutSuccess =  userData => {
+const logoutSuccess = () => {
     localStorage.removeItem('auth_token');
 
     return {
         type: LOGOUT_SUCCESS,
-        payload: userData,
     }
 };
 
@@ -33,8 +31,8 @@ export const logout = () => dispatch => {
             'Accept': 'application/json',
             'Authorization': `Token ${localStorage.getItem('auth_token')}`
         },
-    }).then(({ data }) => {
-        dispatch(logoutSuccess(formatResponseBody(data)));
+    }).then(() => {
+        dispatch(logoutSuccess());
     }).catch(error => {
         dispatch(logoutFailure(error));
     })

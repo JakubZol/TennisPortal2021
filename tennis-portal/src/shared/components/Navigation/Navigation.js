@@ -20,7 +20,6 @@ const Navigation = ({ isAuthenticated, logout, updateDeleteAccountForm, deleteCo
     };
 
     const onDelete = () => {
-        console.log(deleteConfirmationForm);
         deleteAccount(deleteConfirmationForm)
     };
 

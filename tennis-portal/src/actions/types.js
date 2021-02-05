@@ -7,9 +7,9 @@ export const UPDATE_REGISTER_FORM = '@forms/UPDATE_REGISTER_FORM';
 export const CLEAN_REGISTER_FORM = '@forms/CLEAN_REGISTER_FORM';
 
 
-export const LOGIN_INIT = '@user/REGISTER_USER_INIT';
-export const LOGIN_SUCCESS = '@user/REGISTER_USER_SUCCESS';
-export const LOGIN_FAILURE = '@user/REGISTER_USER_FAILURE';
+export const LOGIN_INIT = '@user/LOGIN_INIT';
+export const LOGIN_SUCCESS = '@user/LOGIN_SUCCESS';
+export const LOGIN_FAILURE = '@user/LOGIN_FAILURE';
 
 
 export const UPDATE_LOGIN_FORM = '@forms/UPDATE_LOGIN_FORM';
@@ -54,3 +54,16 @@ export const CLEAN_PASSWORD_FORM = '@forms/CLEAN_PASSWORD_FORM';
 export const GET_MESSAGES_INIT = '@messages/GET_MESSAGES_INIT';
 export const GET_MESSAGES_SUCCESS = '@messages/GET_MESSAGES_SUCCESS';
 export const GET_MESSAGES_FAILURE = '@messages/GET_MESSAGES_FAILURE';
+
+
+export const RECEIVE_MESSAGES_INIT = '@messages/RECEIVE_MESSAGES_INIT';
+export const RECEIVE_MESSAGES_SUCCESS = '@messages/RECEIVE_MESSAGES_SUCCESS';
+export const RECEIVE_MESSAGES_FAILURE = '@messages/RECEIVE_MESSAGES_FAILURE';
+
+
+export const SEND_MESSAGE_INIT = '@messages/SEND_MESSAGE_INIT';
+export const SEND_MESSAGE_SUCCESS = '@messages/SEND_MESSAGE_SUCCESS';
+export const SEND_MESSAGE_FAILURE = '@messages/SEND_MESSAGE_FAILURE';
+
+export const UPDATE_SEND_MESSAGE_FORM = '@messages/UPDATE_SEND_MESSAGE_FORM';
+export const CLEAN_SEND_MESSAGE_FORM = '@messages/CLEAN_SEND_MESSAGE_FORM';
