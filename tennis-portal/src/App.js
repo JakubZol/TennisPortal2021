@@ -5,11 +5,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import UserReducer from './reducers/UserReducer'
 import FormsReducer from './reducers/FormsReducer';
+import MessagesReducer from './reducers/MessagesReducer';
 import AppRouting from './routing';
 import Navigation from './shared/components/Navigation'
 
 const rootReducer = combineReducers({
     user: UserReducer,
+    messages: MessagesReducer,
     forms: FormsReducer,
 });
 

@@ -34,8 +34,6 @@ const cleanDeleteAccountForm = () => ({
 
 export const deleteAccount = deleteConfirmationForm => dispatch => {
     dispatch(deleteAccountInit());
-    console.log(deleteConfirmationForm);
-    console.log(formatRequestBody(deleteConfirmationForm));
 
     axios({
         url: PLAYERS_SERVICE,

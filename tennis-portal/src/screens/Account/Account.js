@@ -4,14 +4,6 @@ import { func, string, number, shape, bool } from 'prop-types';
 
 class Account extends PureComponent {
 
-    componentDidMount() {
-        const { user, getUserData } = this.props;
-
-        if(user && Object.keys(user).length === 0){
-            getUserData();
-        }
-    }
-
     updateFieldState = field => {
         const { userDataForm, updateUserDataForm } = this.props;
         const writable = !userDataForm[field].writable;
@@ -157,7 +149,6 @@ class Account extends PureComponent {
 }
 
 Account.propTypes = {
-    getUserData: func.isRequired,
     user: shape({
         email: string.isRequired,
         username: string.isRequired,
