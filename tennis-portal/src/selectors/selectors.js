@@ -11,3 +11,5 @@ export const getDeleteConfirmationForm = state => state?.forms?.deleteConfirmati
 export const getUpdateUserForm = state => state?.forms?.updateUser;
 
 export const getUpdatePasswordForm = state => state?.forms?.updatePassword;
+
+export const getMessages = state => state?.messages ?? [];
