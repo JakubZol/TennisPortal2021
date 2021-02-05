@@ -6,7 +6,7 @@ import { getAuthenticationState } from "../../../selectors";
 import { logout } from '../../../actions/logout';
 import { bool, func } from 'prop-types';
 import { deleteAccount, updateDeleteAccountForm } from '../../../actions/deleteAccount';
-import { getDeleteConfirmationForm } from "../../../selectors/selectors";
+import { getDeleteConfirmationForm } from "../../../selectors";
 
 
 const Navigation = ({ isAuthenticated, logout, updateDeleteAccountForm, deleteConfirmationForm, deleteAccount }) => {
