@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { arrayOf, shape, func, string, number, oneOf } from 'prop-types';
 
-const Matches = ({ matches, players, findPlayersForm, createMatchForm, fetchMatches, findPlayers, updateFindPlayersForm, cleanPlayersList, updateCreateMatchForm, cleanFindPlayersForm, user, createMatch }) => {
+const Matches = ({ matches, players, findPlayersForm, createMatchForm, updateMatchForm, fetchMatches, findPlayers, updateFindPlayersForm, cleanPlayersList, updateCreateMatchForm, cleanFindPlayersForm, user, createMatch, updateUpdateMatchForm, updateMatch, cleanUpdateMatchForm }) => {
 
     useEffect(() => {
         updateCreateMatchForm({ players: [ user ]});
@@ -11,6 +11,7 @@ const Matches = ({ matches, players, findPlayersForm, createMatchForm, fetchMatc
         }
     },[user]);
 
+    const [ expandedMatch, setExpandedMatch ] = useState(0);
     const [ isDoublesMatch, setIsDoublesMatch ] = useState(false);
 
     const onFindPlayerFilterChange = (value, key, identifier) => {
@@ -78,9 +79,27 @@ const Matches = ({ matches, players, findPlayersForm, createMatchForm, fetchMatc
         }
     };
 
+    const onUpdateMatchFieldChange = (field, value) => {
+        updateUpdateMatchForm({ [field]: value });
+    };
+
     return (
         <div>
             <div>Matches: {matches.length}</div>
+            <ul>
+                {matches.map(({ matchId, score, date }, index) => (
+                    <li key={matchId}>
+                        {`${matchId}: ${score}, ${date}`}
+                        <button onClick={() => { if(index !== expandedMatch){ cleanUpdateMatchForm(); setExpandedMatch(index) }}}>Edytuj dane</button>
+                        {expandedMatch === index && (
+                            <div>
+                                <input type="date" value={updateUpdateMatchForm.date} placeholder="Data" onChange={({ target }) => onUpdateMatchFieldChange('date', target.value)} />
+                                <input type="text" value={updateUpdateMatchForm.score} placeholder="Wynik" onChange={({ target }) => onUpdateMatchFieldChange('score', target.value)} />
+                                <button onClick={() => { updateMatch({ matchId, ...updateMatchForm }) }}>Zaktualizuj dane</button>
+                            </div>)}
+                     </li>)
+                )}
+            </ul>
             <div>
                 {createMatchForm.players?.map(({ username, firstName, lastName }) => `${username}: ${firstName} ${lastName}`).join(', ') ?? ''}
                 {' vs '}

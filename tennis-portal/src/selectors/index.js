@@ -12,6 +12,7 @@ import {
     getCreateMatchForm,
     getFindPlayersForm,
     getFindPlayersResults,
+    getUpdateMatchForm
 } from "./selectors";
 
 export {
@@ -28,4 +29,5 @@ export {
     getCreateMatchForm,
     getFindPlayersForm,
     getFindPlayersResults,
+    getUpdateMatchForm,
 };

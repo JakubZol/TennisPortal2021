@@ -23,3 +23,5 @@ export const getFindPlayersForm = state => state?.forms?.findPlayers;
 export const getCreateMatchForm = state => state?.forms?.match;
 
 export const getFindPlayersResults = state => state?.players ?? {};
+
+export const getUpdateMatchForm = state => state?.forms?.updateMatch;

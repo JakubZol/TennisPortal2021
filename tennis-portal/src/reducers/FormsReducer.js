@@ -15,7 +15,7 @@ import {
     UPDATE_FIND_PLAYERS_FORM,
     CLEAN_FIND_PLAYERS_FORM,
     UPDATE_CREATE_MATCH_FORM,
-    CLEAN_CREATE_MATCH_FORM,
+    CLEAN_CREATE_MATCH_FORM, UPDATE_UPDATE_MATCH_FORM, CLEAN_UPDATE_MATCH_FORM,
 } from "../actions/types";
 
 
@@ -40,7 +40,8 @@ const INITIAL_STATE = {
     updatePassword: {},
     message: '',
     findPlayers: {},
-    match: {}
+    match: {},
+    updateMatch: {},
 };
 
 
@@ -79,6 +80,10 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, match: { ...state.match, ...action.payload } };
         case CLEAN_CREATE_MATCH_FORM:
             return { ...state, match: { } };
+        case UPDATE_UPDATE_MATCH_FORM:
+            return { ...state, updateMatch: { ...state.updateMatch, ...action.payload } };
+        case CLEAN_UPDATE_MATCH_FORM:
+            return { ...state, updateMatch: { } };
         case LOGOUT_SUCCESS:
             return INITIAL_STATE;
         default:
