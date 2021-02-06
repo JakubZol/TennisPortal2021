@@ -1,3 +1,31 @@
-import { getRegisterForm, getLoginForm, getAuthenticationState, getUser, getDeleteConfirmationForm, getUpdateUserForm, getUpdatePasswordForm, getMessages, getMessageContent} from "./selectors";
+import {
+    getRegisterForm,
+    getLoginForm,
+    getAuthenticationState,
+    getUser,
+    getDeleteConfirmationForm,
+    getUpdateUserForm,
+    getUpdatePasswordForm,
+    getMessages,
+    getMessageContent,
+    getMatches,
+    getCreateMatchForm,
+    getFindPlayersForm,
+    getFindPlayersResults,
+} from "./selectors";
 
-export { getRegisterForm, getLoginForm, getAuthenticationState, getUser, getDeleteConfirmationForm, getUpdateUserForm, getUpdatePasswordForm, getMessages, getMessageContent };
+export {
+    getRegisterForm,
+    getLoginForm,
+    getAuthenticationState,
+    getUser,
+    getDeleteConfirmationForm,
+    getUpdateUserForm,
+    getUpdatePasswordForm,
+    getMessages,
+    getMessageContent,
+    getMatches,
+    getCreateMatchForm,
+    getFindPlayersForm,
+    getFindPlayersResults,
+};

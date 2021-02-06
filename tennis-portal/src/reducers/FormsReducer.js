@@ -12,6 +12,10 @@ import {
     UPDATE_SEND_MESSAGE_FORM,
     CLEAN_SEND_MESSAGE_FORM,
     LOGOUT_SUCCESS,
+    UPDATE_FIND_PLAYERS_FORM,
+    CLEAN_FIND_PLAYERS_FORM,
+    UPDATE_CREATE_MATCH_FORM,
+    CLEAN_CREATE_MATCH_FORM,
 } from "../actions/types";
 
 
@@ -35,6 +39,8 @@ const INITIAL_STATE = {
     },
     updatePassword: {},
     message: '',
+    findPlayers: {},
+    match: {}
 };
 
 
@@ -64,6 +70,15 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, message: action.payload };
         case CLEAN_SEND_MESSAGE_FORM:
             return { ...state, message: '' };
+        case UPDATE_FIND_PLAYERS_FORM:
+            return { ...state, findPlayers: { ...state.findPlayers, [action.identifier]: { ...state.findPlayers[action.identifier], ...action.payload } }};
+        case CLEAN_FIND_PLAYERS_FORM:
+            const findPlayers = Object.keys(state.findPlayers).filter(key => key !== action.payload).reduce((newState, key) => ({ ...newState, [key]: state.findPlayers[key] }), {});
+            return { ...state, findPlayers };
+        case UPDATE_CREATE_MATCH_FORM:
+            return { ...state, match: { ...state.match, ...action.payload } };
+        case CLEAN_CREATE_MATCH_FORM:
+            return { ...state, match: { } };
         case LOGOUT_SUCCESS:
             return INITIAL_STATE;
         default:

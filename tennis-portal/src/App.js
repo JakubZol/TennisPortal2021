@@ -6,12 +6,16 @@ import thunk from 'redux-thunk';
 import UserReducer from './reducers/UserReducer'
 import FormsReducer from './reducers/FormsReducer';
 import MessagesReducer from './reducers/MessagesReducer';
+import MatchesReducer from './reducers/MatchesReducer';
+import PlayersReducer from './reducers/PlayersReducer';
 import AppRouting from './routing';
 import Navigation from './shared/components/Navigation'
 
 const rootReducer = combineReducers({
     user: UserReducer,
+    players: PlayersReducer,
     messages: MessagesReducer,
+    matches: MatchesReducer,
     forms: FormsReducer,
 });
 

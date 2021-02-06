@@ -9,3 +9,6 @@ export const PASSWORD_SERVICE = `${PLAYERS_SERVICE}/password`;
 
 // messages service
 export const MESSAGES_SERVICE = `${API_ENDPOINT}/messages`;
+
+//matches service
+export const MATCHES_SERVICE = `${API_ENDPOINT}/matches`;
