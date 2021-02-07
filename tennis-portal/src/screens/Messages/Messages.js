@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { func, shape, arrayOf } from 'prop-types';
 import SingleUserChat from './components/SingleUserChat';
-import {sendMessage} from "../../actions/sendMessage";
 
 class Messages extends PureComponent {
 

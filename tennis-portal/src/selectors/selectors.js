@@ -25,3 +25,13 @@ export const getCreateMatchForm = state => state?.forms?.match;
 export const getFindPlayersResults = state => state?.players ?? {};
 
 export const getUpdateMatchForm = state => state?.forms?.updateMatch;
+
+export const getTournaments = state => state?.tournaments?.tournaments ?? [];
+
+export const getOwnedTournaments = state => state?.tournaments?.ownedTournaments ?? [];
+
+export const getCreateTournamentForm = state => state?.forms?.createTournament;
+
+export const getUpdateTournamentForm = state => state?.forms?.updateTournament;
+
+export const getTournamentMatchForm = state => state?.forms?.tournamentMatch

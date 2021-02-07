@@ -6,6 +6,7 @@ import Register from '../screens/Register';
 import Account from '../screens/Account';
 import Messages from '../screens/Messages';
 import Matches from '../screens/Matches';
+import Tournaments from '../screens/Tournaments';
 
 
 const Main = () => (
@@ -16,7 +17,7 @@ const Main = () => (
         <ProtectedRoute path="/account" component={Account} authenticationRequired/>
         <ProtectedRoute path="/messages" component={Messages} authenticationRequired/>
         <ProtectedRoute path="/matches" component={Matches} authenticationRequired/>
-        <ProtectedRoute path="/tournaments" component={() => <div>tournaments</div>} authenticationRequired/>
+        <ProtectedRoute path="/tournaments" component={Tournaments} authenticationRequired/>
         <Route component={() => <div>no content</div>} />
     </Switch>
 );

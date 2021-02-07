@@ -15,7 +15,13 @@ import {
     UPDATE_FIND_PLAYERS_FORM,
     CLEAN_FIND_PLAYERS_FORM,
     UPDATE_CREATE_MATCH_FORM,
-    CLEAN_CREATE_MATCH_FORM, UPDATE_UPDATE_MATCH_FORM, CLEAN_UPDATE_MATCH_FORM,
+    CLEAN_CREATE_MATCH_FORM,
+    UPDATE_UPDATE_MATCH_FORM,
+    CLEAN_UPDATE_MATCH_FORM,
+    CLEAN_CREATE_TOURNAMENT_FORM,
+    UPDATE_CREATE_TOURNAMENT_FORM,
+    CLEAN_UPDATE_TOURNAMENT_FORM,
+    UPDATE_UPDATE_TOURNAMENT_FORM, UPDATE_TOURNAMENT_MATCH_FORM, CLEAN_TOURNAMENT_MATCH_FORM
 } from "../actions/types";
 
 
@@ -42,6 +48,9 @@ const INITIAL_STATE = {
     findPlayers: {},
     match: {},
     updateMatch: {},
+    createTournament: {},
+    updateTournament: {},
+    tournamentMatch: {},
 };
 
 
@@ -84,6 +93,18 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, updateMatch: { ...state.updateMatch, ...action.payload } };
         case CLEAN_UPDATE_MATCH_FORM:
             return { ...state, updateMatch: { } };
+        case UPDATE_CREATE_TOURNAMENT_FORM:
+            return { ...state, createTournament: { ...state.createTournament, ...action.payload } };
+        case CLEAN_CREATE_TOURNAMENT_FORM:
+            return { ...state, createTournament: { } };
+        case UPDATE_UPDATE_TOURNAMENT_FORM:
+            return { ...state, updateTournament: { ...state.updateTournament, ...action.payload } };
+        case CLEAN_UPDATE_TOURNAMENT_FORM:
+            return { ...state, updateTournament: { } };
+        case UPDATE_TOURNAMENT_MATCH_FORM:
+            return { ...state, tournamentMatch: { ...state.tournamentMatch, ...action.payload }};
+        case CLEAN_TOURNAMENT_MATCH_FORM:
+            return { ...state, tournamentMatch: { } };
         case LOGOUT_SUCCESS:
             return INITIAL_STATE;
         default:
