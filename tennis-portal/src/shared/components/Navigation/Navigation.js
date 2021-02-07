@@ -5,35 +5,27 @@ import { AUTHENTICATED_NAVIGATION, PUBLIC_NAVIGATION } from "../../constants/nav
 import { getAuthenticationState } from "../../../selectors";
 import { logout } from '../../../actions/logout';
 import { bool, func } from 'prop-types';
-import { deleteAccount, updateDeleteAccountForm } from '../../../actions/deleteAccount';
-import { getDeleteConfirmationForm } from "../../../selectors";
+
+import './navigation.scss';
 
 
-const Navigation = ({ isAuthenticated, logout, updateDeleteAccountForm, deleteConfirmationForm, deleteAccount }) => {
+const Navigation = ({ isAuthenticated, logout }) => {
 
     const navigationBar = isAuthenticated ? AUTHENTICATED_NAVIGATION : PUBLIC_NAVIGATION;
     const { pathname: currentPath } = useLocation();
 
-    const onChange = (value, field) => {
-        // TODO: ADD FIELD VALIDATION
-        updateDeleteAccountForm({ [field]: value });
-    };
-
-    const onDelete = () => {
-        deleteAccount(deleteConfirmationForm)
-    };
-
     return (
-        <nav>
-            {Object.keys(navigationBar).map(link => (
-                <Link to={`/${link.toLowerCase()}`} key={navigationBar[link]}>{navigationBar[link]}</Link>
-            ))}
-            {currentPath === '/account' && <>
-                <input onChange={({ target }) => onChange(target.value, 'password1')} type="password" placeholder="Hasło" />
-                <input onChange={({ target }) => onChange(target.value, 'password2')} type="password" placeholder="Potwierdź hasło" />
-                <button onClick={onDelete}>Usuń konto</button>
-            </>}
-            {isAuthenticated && <button onClick={logout}>Wyloguj się</button>}
+        <nav className="navigation">
+            {Object.keys(navigationBar).map(link => {
+                const path = `/${link.toLowerCase()}`;
+
+                return (
+                <Link className={`navigation__link ${path === currentPath ? 'active' : ''}`} to={path}
+                      key={navigationBar[link]}>{navigationBar[link]}</Link>)
+            })}
+            <div className="navigation__additional-buttons">
+                {isAuthenticated && <button className="navigation__link navigation__logout" onClick={logout}>Wyloguj się</button>}
+            </div>
         </nav>
     )
 };
@@ -49,13 +41,10 @@ Navigation.defaultProps = {
 
 const mapStateToProps = state => ({
     isAuthenticated: getAuthenticationState(state),
-    deleteConfirmationForm: getDeleteConfirmationForm(state),
 });
 
 const mapDispatchToProps = {
     logout,
-    updateDeleteAccountForm,
-    deleteAccount,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

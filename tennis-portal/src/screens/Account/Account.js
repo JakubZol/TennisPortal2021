@@ -143,6 +143,12 @@ class Account extends PureComponent {
                     <input value={newPassword2} type="password" placeholder="Powtórz nowe hasło" onChange={({ target }) => updatePasswordFieldValue('newPassword2', target.value)} />
                     <button onClick={onPasswordFormSubmit}>Zmień hasło</button>
                 </div>
+                <div>
+                    Usuń konto:
+                    <input onChange={({ target }) =>  this.props.updateDeleteAccountForm({ password1: target.value })} type="password" placeholder="Hasło" />
+                    <input onChange={({ target }) =>  this.props.updateDeleteAccountForm({ password2: target.value })} type="password" placeholder="Potwierdź hasło" />
+                    <button onClick={() => this.props.deleteAccount(this.props.deleteConfirmationForm)}>Usuń konto</button>
+                </div>
             </>
         )
     }
