@@ -12,3 +12,9 @@ export const MESSAGES_SERVICE = `${API_ENDPOINT}/messages`;
 
 //matches service
 export const MATCHES_SERVICE = `${API_ENDPOINT}/matches`;
+
+
+//tournaments service
+export const TOURNAMENTS_SERVICE = `${API_ENDPOINT}/tournaments`;
+export const OWNED_TOURNAMENTS_ENDPOINT = `${TOURNAMENTS_SERVICE}/owned`;
+export const ENTRIES_SERVICE = `${TOURNAMENTS_SERVICE}/entries`;

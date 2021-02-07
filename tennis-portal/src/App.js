@@ -8,6 +8,7 @@ import FormsReducer from './reducers/FormsReducer';
 import MessagesReducer from './reducers/MessagesReducer';
 import MatchesReducer from './reducers/MatchesReducer';
 import PlayersReducer from './reducers/PlayersReducer';
+import TournamentsReducer from './reducers/TournamentsReducer';
 import AppRouting from './routing';
 import Navigation from './shared/components/Navigation'
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     players: PlayersReducer,
     messages: MessagesReducer,
     matches: MatchesReducer,
+    tournaments: TournamentsReducer,
     forms: FormsReducer,
 });
 
