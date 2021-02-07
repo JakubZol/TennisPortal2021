@@ -26,8 +26,20 @@ export const appendNewMessage = (message, messages, userId) => {
 
     const isMessageFrom = messageFrom.id === userId;
     const messagingUser = !isMessageFrom ? messageFrom : messageTo;
-    return messages.map(({ user, messages }) => ({
-        user,
-        messages: user.id === messagingUser.id ? [ ...messages, { ...messageData, messageFrom: isMessageFrom, messageTo: !isMessageFrom } ] : messages,
-    }))
+    if(messages.findIndex(({ user }) => user.id === messagingUser.id ) > -1) {
+        return messages.map(({user, messages}) => ({
+            user,
+            messages: user.id === messagingUser.id ? [...messages, {
+                ...messageData,
+                messageFrom: isMessageFrom,
+                messageTo: !isMessageFrom
+            }] : messages,
+        }))
+    }
+    else {
+        return [ ...messages, {
+            user: messagingUser,
+            messages: [ { ...messageData, messageFrom: isMessageFrom, messageTo: !isMessageFrom} ]
+        }];
+    }
 };

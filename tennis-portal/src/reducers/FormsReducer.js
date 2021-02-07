@@ -21,7 +21,11 @@ import {
     CLEAN_CREATE_TOURNAMENT_FORM,
     UPDATE_CREATE_TOURNAMENT_FORM,
     CLEAN_UPDATE_TOURNAMENT_FORM,
-    UPDATE_UPDATE_TOURNAMENT_FORM, UPDATE_TOURNAMENT_MATCH_FORM, CLEAN_TOURNAMENT_MATCH_FORM
+    UPDATE_UPDATE_TOURNAMENT_FORM,
+    UPDATE_TOURNAMENT_MATCH_FORM,
+    CLEAN_TOURNAMENT_MATCH_FORM,
+    CLEAN_NEW_CHAT_FORM,
+    UPDATE_NEW_CHAT_FORM,
 } from "../actions/types";
 
 
@@ -45,6 +49,7 @@ const INITIAL_STATE = {
     },
     updatePassword: {},
     message: '',
+    newChat: {},
     findPlayers: {},
     match: {},
     updateMatch: {},
@@ -80,6 +85,10 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, message: action.payload };
         case CLEAN_SEND_MESSAGE_FORM:
             return { ...state, message: '' };
+        case UPDATE_NEW_CHAT_FORM:
+            return { ...state, newChat: { ...state.newChat, ...action.payload }};
+        case CLEAN_NEW_CHAT_FORM:
+            return { ...state, newChat: { }};
         case UPDATE_FIND_PLAYERS_FORM:
             return { ...state, findPlayers: { ...state.findPlayers, [action.identifier]: { ...state.findPlayers[action.identifier], ...action.payload } }};
         case CLEAN_FIND_PLAYERS_FORM:

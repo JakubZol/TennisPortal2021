@@ -31,7 +31,17 @@ class Messages extends PureComponent {
         this.props.sendMessage({ messageTo, message: this.props.messageContent })
     };
 
+    onFindPlayerFilterChange = (value, key) => {
+        this.props.updateFindPlayersForm('newChat', { [key]: value });
+    };
+
+    searchPlayers = () => {
+        this.props.findPlayers('newChat', this.props.findPlayersForm['newChat']);
+    };
+
     render() {
+        const { name, minNtrp, maxNtrp, minAge, maxAge, gender } = this.props.findPlayersForm ?? {};
+
         return (<ul>
             {this.props.messages.map(({ user, messages }) =>
                 <li key={user.id}>
@@ -43,6 +53,35 @@ class Messages extends PureComponent {
                     </div>}
                 </li>)
             }
+            <div>
+                New chat
+                <div>
+                    <input type="text" placeholder='Imię lub nick' value={name}
+                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'name')}/>
+                    <input type="number" min="1" max="7" step="0.5" placeholder="Min. NTRP" value={minNtrp}
+                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'minNtrp')}/>
+                    <input type="number" min="1" max="7" step="0.5" placeholder="Max. NTRP" value={maxNtrp}
+                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'maxNtrp')}/>
+                    <input type="number" placeholder="Min. wiek" value={minAge}
+                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'minAge')}/>
+                    <input type="number" placeholder="Max. wiek" value={maxAge}
+                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'maxAge')}/>
+                    <select placeholder="Płeć" value={gender}
+                            onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'gender')}>
+                        <option>M</option>
+                        <option>W</option>
+                    </select>
+                    <button onClick={() => this.searchPlayers()}>Szukaj</button>
+                </div>
+                <div> {/* todo: update new chat psuje się dla zawodników z okrągłym ntrp (int -> double)*/}
+                    {(this.props.users?.newChat?.filter(({ id }) => this.props.messages.map(({ user }) => user.id).indexOf(id) === -1) ?? []).map((player) => <button key={`newChat-${player.id}`} onClick={() => {this.props.updateNewChatForm({ messageTo: player })}}>{player.username}</button> )}
+                </div>
+                <div>
+                    <div> Message To: {this.props?.newChatForm?.messageTo?.username ?? ''} </div>
+                    <div><input type="text" value={this.props.newChatForm.message} placeholder="Wiadomość" onChange={({ target }) => this.props.updateNewChatForm({ message: target.value })} /></div>
+                    <button onClick={() => this.props.sendMessage(this.props.newChatForm)}>Wyślij</button>
+                </div>
+            </div>
         </ul>)
     }
 }

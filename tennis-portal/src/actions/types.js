@@ -74,6 +74,9 @@ export const SEND_MESSAGE_INIT = '@messages/SEND_MESSAGE_INIT';
 export const SEND_MESSAGE_SUCCESS = '@messages/SEND_MESSAGE_SUCCESS';
 export const SEND_MESSAGE_FAILURE = '@messages/SEND_MESSAGE_FAILURE';
 
+export const UPDATE_NEW_CHAT_FORM = '@forms/UPDATE_NEW_CHAT_FORM';
+export const CLEAN_NEW_CHAT_FORM = '@forms/CLEAN_NEW_CHAT_FORM';
+
 export const UPDATE_SEND_MESSAGE_FORM = '@messages/UPDATE_SEND_MESSAGE_FORM';
 export const CLEAN_SEND_MESSAGE_FORM = '@messages/CLEAN_SEND_MESSAGE_FORM';
 

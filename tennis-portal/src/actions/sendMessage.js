@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SEND_MESSAGE_INIT, SEND_MESSAGE_SUCCESS, SEND_MESSAGE_FAILURE, UPDATE_SEND_MESSAGE_FORM, CLEAN_SEND_MESSAGE_FORM } from './types'
+import { SEND_MESSAGE_INIT, SEND_MESSAGE_SUCCESS, SEND_MESSAGE_FAILURE, UPDATE_SEND_MESSAGE_FORM, CLEAN_SEND_MESSAGE_FORM, UPDATE_NEW_CHAT_FORM } from './types'
 import { MESSAGES_SERVICE } from "../shared/constants/endpoints";
 import formatResponseBody from "../shared/utils/formatResponseBody";
 import formatRequestBody from "../shared/utils/formatRequestBody";
@@ -9,6 +9,11 @@ import { appendNewMessage } from '../shared/utils/dataTransformers/messagesTrans
 export const updateMessageForm = message => ({
     type: UPDATE_SEND_MESSAGE_FORM,
     payload: message,
+});
+
+export const updateNewChatForm = form => ({
+    type: UPDATE_NEW_CHAT_FORM,
+    payload: form,
 });
 
 const sendMessageInit = () => ({

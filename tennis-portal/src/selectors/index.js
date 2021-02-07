@@ -18,6 +18,7 @@ import {
     getCreateTournamentForm,
     getUpdateTournamentForm,
     getTournamentMatchForm,
+    getNewChatForm,
 } from "./selectors";
 
 export {
@@ -40,4 +41,5 @@ export {
     getCreateTournamentForm,
     getUpdateTournamentForm,
     getTournamentMatchForm,
+    getNewChatForm,
 };
