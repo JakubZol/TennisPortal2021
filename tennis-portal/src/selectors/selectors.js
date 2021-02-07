@@ -34,4 +34,6 @@ export const getCreateTournamentForm = state => state?.forms?.createTournament;
 
 export const getUpdateTournamentForm = state => state?.forms?.updateTournament;
 
-export const getTournamentMatchForm = state => state?.forms?.tournamentMatch
+export const getTournamentMatchForm = state => state?.forms?.tournamentMatch;
+
+export const getNewChatForm = state => state?.forms?.newChat;
