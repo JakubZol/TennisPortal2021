@@ -34,7 +34,6 @@ export const deleteEntry = entry => (dispatch, getState) => {
     }).then(() => {
         const { tournaments } = getState().tournaments;
 
-        // TODO: co jak usuwamy innego zawodnika z naszego turnieju?
         const updatedTournaments = tournaments.filter(({ tournamentId }) => tournamentId !== entry.tournament.tournamentId);
         dispatch(deleteEntrySuccess(updatedTournaments));
     }).catch(error => {

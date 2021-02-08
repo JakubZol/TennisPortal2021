@@ -5,6 +5,7 @@ const Tournaments = ({ user, createTournamentForm, tournaments, ownedTournaments
                          updateCreateTournamentForm, updateTournamentForm, updateUpdateTournamentForm, updateTournament, findPlayersForm, updateFindPlayersForm, findPlayers,
                          createEntry, players, tournamentMatchForm, createMatch, updateTournamentMatchForm }) => {
 
+    // TODO: connected with backend, component needs major refactoring
     useEffect(() => {
         fetchTournaments();
         fetchOwnedTournaments();

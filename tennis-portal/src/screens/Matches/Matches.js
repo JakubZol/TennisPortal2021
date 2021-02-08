@@ -3,6 +3,7 @@ import { arrayOf, shape, func, string, number, oneOf } from 'prop-types';
 
 const Matches = ({ matches, players, findPlayersForm, createMatchForm, updateMatchForm, fetchMatches, findPlayers, updateFindPlayersForm, cleanPlayersList, updateCreateMatchForm, cleanFindPlayersForm, user, createMatch, updateUpdateMatchForm, updateMatch, cleanUpdateMatchForm }) => {
 
+    // TODO: connected with backend, component needs major refactoring
     useEffect(() => {
         updateCreateMatchForm({ players: [ user ]});
 
