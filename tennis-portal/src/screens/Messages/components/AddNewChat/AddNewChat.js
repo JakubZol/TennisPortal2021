@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from "../../../../shared/components/Button/Button";
+import { arrayOf, shape, func, number, string } from 'prop-types';
 
 const AddNewChat = ({ users, findPlayers, chatUsers, newChatForm, updateNewChatForm, sendMessage }) => {
 
@@ -11,7 +12,7 @@ const AddNewChat = ({ users, findPlayers, chatUsers, newChatForm, updateNewChatF
     };
 
     const onNewChatUserSelect = user => {
-        updateNewChatForm({ messageTo: { ...user, ntrp: parseFloat(user.ntrp).toString() } });
+        updateNewChatForm({ messageTo: user });
     };
 
     const onNewMessageInputType = ({ target }) => {
@@ -50,6 +51,19 @@ const AddNewChat = ({ users, findPlayers, chatUsers, newChatForm, updateNewChatF
             )}
         </div>
     );
+};
+
+AddNewChat.propTypes = {
+    users: shape({
+        newChat: arrayOf(shape({}))
+    }).isRequired,
+    findPlayers: func.isRequired,
+    chatUsers: arrayOf(number).isRequired,
+    updateNewChatForm: func.isRequired,
+    sendMessage: func.isRequired,
+    newChatForm: shape({
+        message: string,
+    }).isRequired,
 };
 
 export default AddNewChat;

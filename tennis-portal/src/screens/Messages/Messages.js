@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { func, shape, arrayOf } from 'prop-types';
+import { func, shape, arrayOf, string } from 'prop-types';
 import Panel from "../../shared/components/Panel";
 import UsersList from './components/UsersList';
 import SingleUserChat from './components/SingleUserChat/SingleUserChat';
@@ -54,9 +54,24 @@ const Messages = ({ getMessages, receiveMessages, sendMessage, updateMessageForm
 Messages.propTypes = {
     getMessages: func.isRequired,
     receiveMessages: func.isRequired,
+    sendMessage: func.isRequired,
+    updateMessageForm: func.isRequired,
+    cleanMessageForm: func.isRequired,
+    updateFindPlayersForm: func.isRequired,
+    findPlayers: func.isRequired,
+    newChatForm: shape({
+        message: string,
+    }).isRequired,
     messages: arrayOf(
         shape({})
-    ).isRequired
+    ).isRequired,
+    users: arrayOf(shape({})),
+    updateNewChatForm: func.isRequired,
+    messageContent: string,
+};
+
+Messages.defaultProps = {
+    messageContent: string.isRequired,
 };
 
 export default Messages;

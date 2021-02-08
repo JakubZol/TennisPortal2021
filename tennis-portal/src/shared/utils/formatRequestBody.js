@@ -7,7 +7,11 @@ const formatRequestBody = body => {
         const validKey = camelCaseToSnakeCase(key);
         const currentElement = body[key];
 
-        if (Array.isArray(currentElement)){
+        if (key === 'ntrp'){
+            const parsedNtrp = parseFloat(currentElement).toString();
+            validRequestBody[key] = parsedNtrp.length === 1 ? `${parsedNtrp}.0` : parsedNtrp;
+        }
+        else if (Array.isArray(currentElement)){
             validRequestBody[validKey] = currentElement.map(element => typeof element === 'object' && element !== null ? formatRequestBody(element) : element);
         }
         else if(typeof currentElement === 'object' && currentElement !== null){

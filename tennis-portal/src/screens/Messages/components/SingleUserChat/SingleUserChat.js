@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { arrayOf, func, shape } from 'prop-types';
+import { arrayOf, func, shape, string, number, bool } from 'prop-types';
 import Button from "../../../../shared/components/Button/Button";
 
 
@@ -47,28 +47,29 @@ const SingleUserChat = ({ messages, receiveMessages, user, messageContent, sendM
     );
 };
 
-/*class SingleUserChat extends PureComponent {
-
-    componentDidMount() {
-        const receivedMessages = this.props.messages.filter(({ messageTo, received }) => messageTo && !received).map(({ messageId }) => messageId);
-
-        if (receivedMessages.length > 0) {
-            this.props.receiveMessages(receivedMessages);
-        }
-    }
-
-    render() {
-        return(
-                <ul>
-                    {this.props.messages.map(message => <li key={message.messageId} style={{ color: message.messageFrom ? 'red': 'green' }}>{message.message}</li>)}
-                </ul>
-        )
-    }
-}*/
 
 SingleUserChat.propTypes = {
-    messages: arrayOf(shape({})).isRequired,
+    messages: arrayOf(shape({
+        messageId: number.isRequired,
+        message: string.isRequired,
+        messageFrom: bool.isRequired,
+        received: bool.isRequired,
+    })).isRequired,
     receiveMessages: func.isRequired,
+    user: shape({
+        id: number.isRequired,
+        email: string.isRequired,
+        username: string.isRequired,
+        firstName: string.isRequired,
+        lastName: string.isRequired,
+    }).isRequired,
+    messageContent: string,
+    sendMessage: func.isRequired,
+    updateMessageForm: func.isRequired,
+};
+
+SingleUserChat.defaultProps = {
+    messageContent: '',
 };
 
 export default SingleUserChat
