@@ -1,0 +1,13 @@
+.panel{
+  border: 1px outset #216e25;
+  border-radius: 1rem;
+  padding: 3rem;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #f2f2f2;
+  flex-direction: column;
+  align-items: center;
+  -webkit-box-shadow: 2px 0 18px -4px rgba(0,0,0,0.48);
+  -moz-box-shadow: 2px 0 18px -4px rgba(0,0,0,0.48);
+  box-shadow: 2px 0 18px -4px rgba(0,0,0,0.48);
+}

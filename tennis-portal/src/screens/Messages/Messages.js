@@ -1,97 +1,77 @@
-import React, { PureComponent } from 'react';
-import { func, shape, arrayOf } from 'prop-types';
-import SingleUserChat from './components/SingleUserChat';
+import React, { useEffect, useState } from 'react';
+import { func, shape, arrayOf, string } from 'prop-types';
+import Panel from "../../shared/components/Panel";
+import UsersList from './components/UsersList';
+import SingleUserChat from './components/SingleUserChat/SingleUserChat';
+import AddNewChat from './components/AddNewChat';
 
-class Messages extends PureComponent {
+import './messages-screen.scss';
 
-    constructor(props){
-        super(props);
 
-        this.state = {
-            currentChat: undefined,
-        };
+const Messages = ({ getMessages, receiveMessages, sendMessage, updateMessageForm, cleanMessageForm, updateFindPlayersForm, findPlayers, newChatForm, users: foundUsers, messages, messageContent, updateNewChatForm }) => {
 
-        this.setCurrentTab.bind(this);
-    }
+    const [ currentChat, setCurrentChat ] = useState(0);
 
-    componentDidMount(){
-        this.props.getMessages();
-    }
+    useEffect(() => {
+        getMessages();
+    }, []);
 
-    setCurrentTab(id) {
-        this.setState({ currentChat: id });
-        this.props.cleanMessageForm();
-    }
+    const users = messages.map(({ user }) => user);
+    const chatUsers = users.map(({ id }) => id);
+    const currentChatMessages = messages?.[currentChat]?.messages ?? [];
+    const currentChatUser = messages?.[currentChat]?.user ?? {};
 
-    onMessageFieldChange = ({ target }) => {
-        this.props.updateMessageForm(target.value);
-    };
-
-    onMessageSend = messageTo => {
-        this.props.sendMessage({ messageTo, message: this.props.messageContent })
-    };
-
-    onFindPlayerFilterChange = (value, key) => {
-        this.props.updateFindPlayersForm('newChat', { [key]: value });
-    };
-
-    searchPlayers = () => {
-        this.props.findPlayers('newChat', this.props.findPlayersForm['newChat']);
-    };
-
-    render() {
-        const { name, minNtrp, maxNtrp, minAge, maxAge, gender } = this.props.findPlayersForm ?? {};
-
-        return (<ul>
-            {this.props.messages.map(({ user, messages }) =>
-                <li key={user.id}>
-                    <button onClick={() => this.setCurrentTab(user.id)}>{user.username} ({messages.length} wiadomości)</button>
-                    {this.state.currentChat === user.id && <div>
-                        <SingleUserChat messages={messages} receiveMessages={this.props.receiveMessages}/>
-                        <input type="text" value={this.props.messageContent} onChange={this.onMessageFieldChange}/>
-                        <button onClick={() => this.onMessageSend(user)} disabled={!this.props.messageContent || this.props.messageContent.length === 0}>Wyślij</button>
-                    </div>}
-                </li>)
-            }
-            <div>
-                New chat
-                <div>
-                    <input type="text" placeholder='Imię lub nick' value={name}
-                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'name')}/>
-                    <input type="number" min="1" max="7" step="0.5" placeholder="Min. NTRP" value={minNtrp}
-                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'minNtrp')}/>
-                    <input type="number" min="1" max="7" step="0.5" placeholder="Max. NTRP" value={maxNtrp}
-                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'maxNtrp')}/>
-                    <input type="number" placeholder="Min. wiek" value={minAge}
-                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'minAge')}/>
-                    <input type="number" placeholder="Max. wiek" value={maxAge}
-                           onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'maxAge')}/>
-                    <select placeholder="Płeć" value={gender}
-                            onChange={({target}) => this.onFindPlayerFilterChange(target.value, 'gender')}>
-                        <option>M</option>
-                        <option>W</option>
-                    </select>
-                    <button onClick={() => this.searchPlayers()}>Szukaj</button>
+    return (
+        <div className="messages-screen">
+            <Panel className="messages-screen__panel">
+                <div className="messages-screen__content">
+                    <UsersList users={users} setCurrentChat={setCurrentChat} currentChat={currentChat} />
+                    {currentChat < users.length ?
+                        (<SingleUserChat
+                            messages={currentChatMessages}
+                            receiveMessages={receiveMessages}
+                            user={currentChatUser}
+                            messageContent={messageContent}
+                            sendMessage={sendMessage}
+                            updateMessageForm={updateMessageForm}
+                        />) : (
+                            <AddNewChat
+                                users={foundUsers}
+                                findPlayers={findPlayers}
+                                chatUsers={chatUsers}
+                                newChatForm={newChatForm}
+                                sendMessage={sendMessage}
+                                updateNewChatForm={updateNewChatForm}
+                            />
+                        )}
                 </div>
-                <div> {/* todo: update new chat psuje się dla zawodników z okrągłym ntrp (int -> double)*/}
-                    {(this.props.users?.newChat?.filter(({ id }) => this.props.messages.map(({ user }) => user.id).indexOf(id) === -1) ?? []).map((player) => <button key={`newChat-${player.id}`} onClick={() => {this.props.updateNewChatForm({ messageTo: player })}}>{player.username}</button> )}
-                </div>
-                <div>
-                    <div> Message To: {this.props?.newChatForm?.messageTo?.username ?? ''} </div>
-                    <div><input type="text" value={this.props.newChatForm.message} placeholder="Wiadomość" onChange={({ target }) => this.props.updateNewChatForm({ message: target.value })} /></div>
-                    <button onClick={() => this.props.sendMessage(this.props.newChatForm)}>Wyślij</button>
-                </div>
-            </div>
-        </ul>)
-    }
-}
+            </Panel>
+        </div>
+    );
+};
+
 
 Messages.propTypes = {
     getMessages: func.isRequired,
     receiveMessages: func.isRequired,
+    sendMessage: func.isRequired,
+    updateMessageForm: func.isRequired,
+    cleanMessageForm: func.isRequired,
+    updateFindPlayersForm: func.isRequired,
+    findPlayers: func.isRequired,
+    newChatForm: shape({
+        message: string,
+    }).isRequired,
     messages: arrayOf(
         shape({})
-    ).isRequired
+    ).isRequired,
+    users: arrayOf(shape({})),
+    updateNewChatForm: func.isRequired,
+    messageContent: string,
+};
+
+Messages.defaultProps = {
+    messageContent: string.isRequired,
 };
 
 export default Messages;

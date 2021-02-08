@@ -1,0 +1,32 @@
+.button {
+  border: none;
+  outline: none;
+  background-color: #216e25;
+  color: white;
+  height: 3rem;
+  padding: 0 3rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+
+  &.warning {
+    background-color: red;
+
+    &:hover {
+      background-color: maroon;
+    }
+
+    &:disabled {
+      background-color: #4a4a4a;
+    }
+  }
+
+  &:hover {
+    background-color: #74d450;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #4a4a4a;
+  }
+}

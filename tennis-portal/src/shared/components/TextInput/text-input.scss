@@ -1,0 +1,46 @@
+.text-input{
+  width: 25rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+
+  &__container {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  &__label {
+    font-size: small;
+    border-bottom: 1px solid #d4d4d4;
+    border-left: 1px solid #d4d4d4;
+    padding: 0.2rem 1rem;
+
+    &.required {
+      font-weight: bold;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    padding: 0;
+    height: 2rem;
+    outline: none;
+  }
+
+  &__validation-error {
+    color: white;
+    background-color: maroon;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: medium;
+  }
+
+  &.invalid {
+    border-color: maroon;
+  }
+
+}

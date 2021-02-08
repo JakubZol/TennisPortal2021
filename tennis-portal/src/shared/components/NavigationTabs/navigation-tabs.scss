@@ -1,0 +1,38 @@
+.navigation-tabs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 5.5rem);
+
+  &__menu {
+    width: 10%;
+    border-right: #216e25 solid 1px;
+    padding-top: 2rem;
+  }
+
+  &__link {
+    color: #216e25;
+    height: 3rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+
+    &.active {
+      background-color: #216e25;
+      color: #ffffff;
+    }
+
+    &:hover {
+      background-color: #216e25;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+  }
+
+  &__content {
+    width: 90%;
+    align-content: center;
+  }
+
+}

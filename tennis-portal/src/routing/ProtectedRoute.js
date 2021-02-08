@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
-import {bool, elementType, number, shape, string} from 'prop-types';
+import { bool, elementType, number, shape, string } from 'prop-types';
 import { getAuthenticationState, getUser } from "../selectors";
 import { fetchUserData } from "../actions/fetchUserData";
 
