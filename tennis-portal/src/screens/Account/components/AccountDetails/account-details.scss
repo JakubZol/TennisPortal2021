@@ -1,0 +1,15 @@
+.account-details {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+
+  &__panel {
+    width: 40%;
+    padding-bottom: 5rem;
+  }
+
+  &__detail {
+    margin-bottom: 1rem;
+  }
+}

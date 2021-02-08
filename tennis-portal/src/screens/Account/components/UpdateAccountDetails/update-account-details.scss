@@ -1,0 +1,27 @@
+.update-account-details-screen{
+  width: 100%;
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+
+  &__panel {
+    margin-bottom: 4rem;
+  }
+
+  &__form-container {
+    display: flex;
+  }
+
+  &__form-tab {
+    padding: 3rem;
+
+  }
+
+  &__input {
+    margin-bottom: 1.5rem;
+  }
+
+  &__submit-button {
+    width: 20rem;
+  }
+}

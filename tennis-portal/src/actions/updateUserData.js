@@ -12,10 +12,9 @@ import formatRequestBody from '../shared/utils/formatRequestBody';
 import formatResponseBody from '../shared/utils/formatResponseBody';
 
 
-export const updateUserDataForm = (field, formData) => ({
+export const updateUserDataForm = data => ({
     type: UPDATE_USER_DATA_FORM,
-    payload: formData,
-    field,
+    payload: data,
 });
 
 

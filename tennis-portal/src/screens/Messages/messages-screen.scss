@@ -1,0 +1,173 @@
+.messages-screen {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0 0;
+
+  &__panel {
+    width: 65%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    height: 75vh;
+  }
+
+  &__chat {
+    width: calc(100% - 15rem);
+  }
+
+  &__chat-header {
+    background-color: #216e25;
+    color: white;
+    text-align: center;
+    border-top-right-radius: 1rem;
+    height: 3rem;
+    font-size: larger;
+    padding-top: 0.75rem;
+    box-sizing: border-box;
+  }
+
+  &__chat-messages {
+    overflow-y: auto;
+    height: 80%;
+    border-bottom: #216e25 1px solid;
+  }
+
+  &__message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    width: fit-content;
+    max-width: 50%;
+    margin: 0.5rem;
+    box-sizing: border-box;
+
+    &.from {
+      margin-left: auto;
+      background-color: #216e25;
+      text-align: right;
+    }
+
+    &.to {
+      margin-right: auto;
+      background-color: #74d450;
+      text-align: left;
+    }
+
+    &--not-received {
+      font-size: xx-small;
+    }
+  }
+
+  &__send-message-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &__send-message-input {
+    width: 70%;
+  }
+
+  &__send-message-button {
+    margin-left: 1rem;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__users-list {
+    width: 15rem;
+    border-right: #216e25 1px solid;
+    padding: 3rem 0 0;
+  }
+
+  &__user-link {
+    color: #216e25;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    height: 5rem;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &.active {
+      background-color: #216e25;
+      color: white;
+    }
+
+    &:hover {
+      background-color: #216e25;
+      color: white;
+    }
+  }
+
+  &__email{
+    font-size: small;
+  }
+
+  &__new-chat-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40%;
+    border-bottom: #216e25 1px solid;
+    overflow-y: auto;
+  }
+
+  &__search-user-tab {
+    text-align: center;
+    color: #216e25;
+    border: #216e25 1px solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+      background-color: white;
+      font-weight: bold;
+    }
+  }
+
+  &__search-results-container{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+
+  &__search-users-input {
+    width: 25rem;
+    margin: 1rem 0;
+  }
+
+  &__new-chat-user {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: large;
+    color: #216e25;
+    font-weight: bold;
+  }
+
+  &__new-chat-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > input {
+      width: 25rem;
+      margin: 1rem 0;
+    }
+
+    & > button {
+      width: 20rem;
+    }
+  }
+}

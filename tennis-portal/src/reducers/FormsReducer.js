@@ -34,19 +34,7 @@ const INITIAL_STATE = {
     register: {},
     login: {},
     deleteConfirmation: {},
-    updateUser: {
-        username: { writable: false },
-        email: { writable: false },
-        firstName: { writable: false },
-        lastName: { writable: false },
-        height: { writable: false },
-        weight: { writable: false },
-        gender: { writable: false },
-        birthdate: { writable: false },
-        plays: { writable: false },
-        backhand: { writable: false },
-        ntrp: { writable: false },
-    },
+    updateUser: {},
     updatePassword: {},
     message: '',
     newChat: {},
@@ -74,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
         case CLEAN_DELETE_CONFIRMATION_FORM:
             return { ...state, deleteConfirmation: {} };
         case UPDATE_USER_DATA_FORM:
-            return { ...state, updateUser: { ...state.updateUser, [action.field]: action.payload } };
+            return { ...state, updateUser: { ...state.updateUser, ...action.payload } };
         case CLEAN_USER_DATA_FORM:
             return { ...state, updateUser: INITIAL_STATE.updateUser };
         case UPDATE_PASSWORD_FORM:
